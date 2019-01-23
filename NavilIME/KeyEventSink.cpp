@@ -149,7 +149,7 @@ void TextService::_Automata(UINT key)
 		DebugLogFile(L"\t%s\n", L"BACKSPACE");
 		_keyEaten = true;
 		gNavilIME.HangulBackspace();
-		if (gNavilIME.HangulGetPreedit() == 0)
+		if (gNavilIME.HangulGetPreedit(0) == 0)
 		{
 			// 자모를 다 지우고 libhangul 버퍼가 비어 있는 상황
 			_keyEaten = false;
@@ -162,20 +162,6 @@ void TextService::_Automata(UINT key)
 		DebugLogFile(L"\t%s %x\n", L"proc:", code);
 
 		_keyEaten = true;
-
-		UINT commit = gNavilIME.HangulGetCommit();
-		if (commit != 0)
-		{
-			// 한글을 조합하다가 숫자나 기호를 입력하면 commit에는 한글이 있고 preedit은 0이다.
-			UINT preedit = gNavilIME.HangulGetPreedit();
-			if (preedit == 0) {
-				_keyEaten = false;
-			}
-			// 숫자나 기호를 중간에 한글 없이 연속해서 입력하면 commit과 code가 값이 같다.
-			if (commit == code) {
-				_keyEaten = false;
-			}
-		}
 	}
 }
 
@@ -226,14 +212,19 @@ STDMETHODIMP TextService::OnKeyDown(ITfContext *pContext, WPARAM wParam, LPARAM 
 
 	*pIsEaten = _keyEaten;
 
-	UINT commit = gNavilIME.HangulGetCommit();
+	UINT commit = gNavilIME.HangulGetCommit(0);
 	if (commit != 0)
 	{
 		DebugLogFile(L"\t%s -> %x\n", L"commit", commit);
-		_EndComposition(pContext);
+		if (_IsComposing())	{
+			_EndComposition(pContext);
+		}
+		else {
+			_AppendText(pContext, (WCHAR)commit);
+		}
 		return S_OK;
 	}
-	UINT preedit = gNavilIME.HangulGetPreedit();
+	UINT preedit = gNavilIME.HangulGetPreedit(0);
 	if (preedit != 0) {
 		DebugLogFile(L"\t%s -> %x\n", L"preedit", preedit);
 		_HandleComposition(pContext, (WCHAR)preedit);
@@ -260,13 +251,30 @@ STDMETHODIMP TextService::OnKeyUp(ITfContext *pContext, WPARAM wParam, LPARAM lP
 
 	if (*pIsEaten)
 	{
-		UINT commit = gNavilIME.HangulGetCommit();
+		UINT commit = gNavilIME.HangulGetCommit(0);
 		if (commit != 0)
 		{
-			UINT preedit = gNavilIME.HangulGetPreedit();
+			UINT preedit = gNavilIME.HangulGetPreedit(0);
 			if (preedit != 0) {
 				DebugLogFile(L"\t%s -> %x\n", L"preedit (in KeyUp)", preedit);
 				_HandleComposition(pContext, (WCHAR)preedit);
+			}
+			else
+			{
+				for (UINT i = 1; i < 8; i++) {
+					UINT remainedCommit = gNavilIME.HangulGetCommit(i);
+					DebugLogFile(L"\t%s[%d] -> %x\n", L"remained commit (in KeyUp)", i, remainedCommit);
+
+					if (remainedCommit != 0)
+					{
+						_AppendText(pContext, (WCHAR)remainedCommit);
+					}
+					else
+					{
+						break;
+					}
+				}
+				gNavilIME.HangulFlush();
 			}
 		}
 	}

@@ -124,6 +124,21 @@ void TextService::_HandleComposition(ITfContext *pContext, WCHAR preedit)
 	}
 }
 
+void TextService::_AppendText(ITfContext *pContext, WCHAR txt)
+{
+	DebugLogFile(L"%s\n", L"TextService::_AppendText");
+
+	AppendCompositionEditSession* pAppendEditSession;
+	HRESULT hr;
+
+	if (pAppendEditSession = new AppendCompositionEditSession(this, pContext))
+	{
+		pAppendEditSession->SetPContext(pContext, (WPARAM)txt);
+		pContext->RequestEditSession(_ClientId, pAppendEditSession, TF_ES_SYNC | TF_ES_READWRITE, &hr);
+		pAppendEditSession->Release();
+	}
+}
+
 void TextService::_EndComposition(ITfContext *pContext)
 {
 	if (_IsComposing())

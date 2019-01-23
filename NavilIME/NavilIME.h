@@ -18,8 +18,8 @@ public:
 	void HangulNew();
 	bool HangulProcess(int ascii);
 	bool HangulBackspace();
-	UINT HangulGetPreedit();
-	UINT HangulGetCommit();
+	UINT HangulGetPreedit(UINT idx);
+	UINT HangulGetCommit(UINT idx);
 	UINT HangulFlush();
 
 private:

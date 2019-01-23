@@ -79,6 +79,7 @@ private:
 	bool _IsComposing();
 	void _StartComposition(ITfContext *pContext, WPARAM wParam);
 	void _HandleComposition(ITfContext *pContext, WCHAR preedit);
+	void _AppendText(ITfContext *pContext, WCHAR txt);
 	void _EndComposition(ITfContext *pContext);
 
 private:

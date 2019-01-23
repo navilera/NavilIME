@@ -18,7 +18,7 @@
 
 
 #ifdef _DEBUG
-#define DEBUG_LOGFILE L"C:\\Users\\yiman\\Documents\\Projects\\Ime\\TheNew\\NavilIME\\navilime.log"
+#define DEBUG_LOGFILE L"C:\\Users\\yiman\\Documents\\Projects\\NavilIME\\navilime.log"
 void DebugLog(const wchar_t *format, ...);
 #define DebugLogFile(fmt, ...) DebugLog(fmt, __VA_ARGS__)
 #else

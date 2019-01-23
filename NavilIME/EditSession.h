@@ -36,6 +36,16 @@ public:
 	STDMETHODIMP DoEditSession(TfEditCookie ec);
 };
 
+class AppendCompositionEditSession : public EditSession
+{
+public:
+	AppendCompositionEditSession(TextService* pTxtSvc, ITfContext* pCtx);
+
+	// ITfEditSession
+	STDMETHODIMP DoEditSession(TfEditCookie ec);
+};
+
+
 class EndCompositionEditSession : public EditSession
 {
 public:

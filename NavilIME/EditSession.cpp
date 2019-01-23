@@ -147,6 +147,50 @@ Exit:
 	return S_OK;
 }
 
+AppendCompositionEditSession::AppendCompositionEditSession(TextService* pTxtSvc, ITfContext* pCtx) : EditSession(pTxtSvc)
+{
+	SetPContext(pCtx, 0);
+}
+
+// ITfEditSession
+STDMETHODIMP AppendCompositionEditSession::DoEditSession(TfEditCookie ec)
+{
+	DebugLogFile(L"%s EC:%lu\n", L"AppendCompositionEditSession::DoEditSession", ec);
+	ITfInsertAtSelection *pInsertAtSelection;
+	ITfRange *pRange;
+	TF_SELECTION tfSelection;
+
+	// insert the text
+	WCHAR ch = (WCHAR)_wParam;
+
+	// A special interface is required to insert text at the selection
+	if (_pContext->QueryInterface(IID_ITfInsertAtSelection, (void **)&pInsertAtSelection) != S_OK) {
+		return S_OK;
+	}
+
+	// insert the text
+	if (pInsertAtSelection->InsertTextAtSelection(ec, 0, &ch, 1, &pRange) != S_OK) {
+		goto Exit;
+	}
+
+	// update the selection, we'll make it an insertion point just past
+	// the inserted text.
+	pRange->Collapse(ec, TF_ANCHOR_END);
+
+	tfSelection.range = pRange;
+	tfSelection.style.ase = TF_AE_NONE;
+	tfSelection.style.fInterimChar = FALSE;
+
+	_pContext->SetSelection(ec, 1, &tfSelection);
+
+	pRange->Release();
+
+Exit:
+	pInsertAtSelection->Release();
+
+	return S_OK;
+}
+
 EndCompositionEditSession::EndCompositionEditSession(TextService* pTxtSvc, ITfContext* pCtx) : EditSession(pTxtSvc)
 {
 	SetPContext(pCtx, 0);
