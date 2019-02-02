@@ -201,6 +201,19 @@ STDMETHODIMP EndCompositionEditSession::DoEditSession(TfEditCookie ec)
 {
 	DebugLogFile(L"%s EC:%lu\n", L"EndCompositionEditSession::DoEditSession", ec);
 
+	TF_SELECTION tfSelection = { 0 };
+	ULONG cFetched = 0;
+
+	if (_pContext->GetSelection(ec, TF_DEFAULT_SELECTION, 1, &tfSelection, &cFetched) == S_OK)
+	{
+		DebugLogFile(L"\t%s\n", L"Make cursor to end of range");
+		tfSelection.range->Collapse(ec, TF_ANCHOR_END);
+		tfSelection.style.fInterimChar = FALSE;
+
+		_pContext->SetSelection(ec, 1, &tfSelection);
+		tfSelection.range->Release();
+	}
+
 	_pTextService->TerminateComposition(ec);
 	return S_OK;
 }

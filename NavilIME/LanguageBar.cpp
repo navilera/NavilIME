@@ -108,6 +108,8 @@ LanguageBar::LanguageBar(REFGUID guidLangBar, LPCWSTR description, LPCWSTR toolt
 			StringCchCopy((LPWSTR)_pTooltipText, bufLen, tooltip);
 		}
 	}
+
+	SetStatus(TF_LBI_STATUS_BTN_TOGGLED, TRUE);
 }
 
 LanguageBar::~LanguageBar()

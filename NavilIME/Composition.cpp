@@ -79,16 +79,18 @@ HRESULT TextService::HandleCompositionKey(TfEditCookie ec, ITfContext *pContext,
 	// insert the text
 	// use SetText here instead of InsertTextAtSelection because a composition has already been started
 	// Don't allow to the app to adjust the insertion point inside the composition
-	if (tfSelection.range->SetText(ec, 0, &ch, 1) != S_OK)
+	//if (tfSelection.range->SetText(ec, 0, &ch, 1) != S_OK)
+	if (tfSelection.range->SetText(ec, TF_ST_CORRECTION, &ch, 1) != S_OK)
 	{
+		DebugLogFile(L"\t%s\n", L"SetText Fail..");
 		tfSelection.range->Release();
 		return S_OK;
 	}
 
 	// update the selection, we'll make it an insertion point just past
 	// the inserted text.
-	tfSelection.range->Collapse(ec, TF_ANCHOR_END);
-	pContext->SetSelection(ec, 1, &tfSelection);
+	//tfSelection.range->Collapse(ec, TF_ANCHOR_END);
+	//pContext->SetSelection(ec, 1, &tfSelection);
 	tfSelection.range->Release();
 
 	return S_OK;

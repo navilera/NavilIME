@@ -142,6 +142,7 @@ void TextService::_Automata(UINT key)
 	if (key == VK_SHIFT)
 	{
 		_keyEaten = true;
+		return;
 	}
 
 	if (key == VK_BACK)
