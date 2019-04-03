@@ -181,6 +181,23 @@ STDMETHODIMP TextService::OnSetFocus(BOOL fForeground)
 STDMETHODIMP TextService::OnTestKeyDown(ITfContext *pContext, WPARAM wParam, LPARAM lParam, BOOL *pIsEaten)
 {
 	DebugLogFile(L"%s\n", L"TextService::OnTestKeyDown");
+
+	// MS Word에서는 space 혹은 enter 다음에 TestKeyDown을 두번 호출한다.
+	// 진짜 keycode을 얹어서 두 번 호출한다...-_-; 그래서 처리를 해 주지 않으면 space 다음에 쌍자음이 입력된다.
+	// _testKeyHappend 변수는 OnTestKeyDown이 처리되면 true로 바뀌고 키 입력 처리가 OnKeyDown에서 완료되면 false로 바뀌므로 _testKeyHappend 변수 값이 true인 동안에는 OnTestKeyDown에서 automata 처리를 하지 않고 입력값 자체도 무시해버려야(Eaten=true) 한다.
+	if (gNavilIME.GetHangulMode() == false)
+	{
+		_keyEaten = false;
+		*pIsEaten = false;
+		return S_OK;
+	}
+	if (_testKeyHappened == true)
+	{
+		DebugLogFile(L"\t->%s\n", L"Waiting KeyDown done..");
+		_keyEaten = true;
+		*pIsEaten = true;
+		return S_OK;
+	}
 	
 	_Automata((UINT)wParam);
 	*pIsEaten = _keyEaten;
@@ -212,6 +229,7 @@ STDMETHODIMP TextService::OnKeyDown(ITfContext *pContext, WPARAM wParam, LPARAM 
 	}
 
 	*pIsEaten = _keyEaten;
+	_testKeyHappened = false;
 
 	UINT commit = gNavilIME.HangulGetCommit(0);
 	if (commit != 0)
@@ -239,6 +257,7 @@ STDMETHODIMP TextService::OnTestKeyUp(ITfContext *pContext, WPARAM wParam, LPARA
 	DebugLogFile(L"%s\n", L"TextService::OnTestKeyUp");
 
 	*pIsEaten = _keyEaten;
+	_testKeyHappened = false;
 
 	return S_OK;
 }
