@@ -207,6 +207,7 @@ STDMETHODIMP TextService::OnTestKeyDown(ITfContext *pContext, WPARAM wParam, LPA
 	{
 		_EndComposition(pContext);
 		gNavilIME.HangulFlush();
+		_testKeyHappened = false;
 	}
 
 	return S_OK;
