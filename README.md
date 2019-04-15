@@ -52,7 +52,7 @@ regsvr32 /u "c:\Program Files (x86)\NavilIME\NavilIME.dll"
 ```
 
 ## How configure a keyboard layout
-Modify Keyboard.dat from the installation folder (default is C:\Program Files\NavilIME). Write an one of following list.
+Modify Keyboard.dat from the installation folder (default are C:\Program Files\NavilIME and c:\Program Files (x86)\NavilIME). Write an one of following list.
 
 * 318Na
 * 2
