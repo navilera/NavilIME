@@ -51,6 +51,12 @@ regsvr32 /u "c:\Program Files\NavilIME\NavilIME.dll"
 regsvr32 /u "c:\Program Files (x86)\NavilIME\NavilIME.dll"
 ```
 
+## Uninstallation using automatic uninstaller
+Just download uninstaller tool from [https://github.com/navilera/NavilIME/tree/master/Release/Uninstaller].
+Please extract zip file. It should make 3 files. (DllFinder_x32.exe, DllFinder_x64.exe, navilIME_uninstaller.exe) Please make sure place these files to be same folder.
+Then run the navilIME_uninstaller.exe as Administrator.
+
+
 ## How configure a keyboard layout
 Modify Keyboard.dat from the installation folder (default are C:\Program Files\NavilIME and c:\Program Files (x86)\NavilIME). Write an one of following list.
 
