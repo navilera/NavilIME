@@ -3,3 +3,8 @@
 /.vs/
 /Win32/
 /NavilIME/Win32/
+/navilIME_uninstaller/.vs
+/navilIME_uninstaller/navilIME_uninstaller/obj
+/navilIME_uninstaller/navilIME_uninstaller/bin
+/navilIME_uninstaller/DllFinder/obj
+/navilIME_uninstaller/DllFinder/bin
