@@ -10,6 +10,9 @@
 !define DATSRC "..\NavilIME\Keyboard.dat"
 !define INSTDIR "NavilIME"
 
+!define NAVILIME_ICON "..\NavilIME\Images\Navilime.ico"
+!define NAVILIME_CTRL_TOOL "..\navilIME_control\navilIME_control\bin\Release\navilIME_control.exe"
+
 ;!include "x64.nsh"
 ;Include Modern UI
 !include "MUI2.nsh"
@@ -26,8 +29,8 @@ BrandingText "NavilIME Installer"
   ;General
   Name "${APPNAME}"
   OutFile "NavilIme-${RELVERSION}.exe"
-  !define MUI_ICON "..\NavilIME\Images\Navilime.ico"
-  !define MUI_UNICON "..\NavilIME\Images\Navilime.ico"
+  !define MUI_ICON "${NAVILIME_ICON}"
+  !define MUI_UNICON "${NAVILIME_ICON}"
 
 ;--------------------------------
 ;Pages
@@ -63,6 +66,13 @@ Section "NavilIME" SecBody
   SetOverwrite try
   File "${X64SRC}"
   File "${DATSRC}"
+  
+  File "${NAVILIME_CTRL_TOOL}"
+  File "${NAVILIME_ICON}"
+  
+  # Start Menu
+  CreateDirectory "$SMPROGRAMS\${INSTDIR}"
+  CreateShortCut "$SMPROGRAMS\${INSTDIR}\Setting.lnk" "$PROGRAMFILES64\${INSTDIR}\navilIME_control.exe" "" "$PROGRAMFILES64\${INSTDIR}\Navilime.ico" 0
 
   SetOutPath "$PROGRAMFILES32\${INSTDIR}"
   SetOverwrite try
