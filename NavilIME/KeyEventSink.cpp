@@ -311,18 +311,12 @@ STDMETHODIMP TextService::OnPreservedKey(ITfContext *pContext, REFGUID rguid, BO
 	if (IsEqualGUID(rguid, cPreservedKey_GUID_ToggleHangul)) {
 		DebugLogFile(L"\t%s\n", L"-> toggle Hangul");
 		_pHangulTurnOnOffStatus->ToggleStatus();
+		
+		if (_IsComposing()) {
+			gNavilIME.HangulFlush();
+			_EndComposition(pContext);
+		}
 
-		/*
-		BOOL fOpen = _IsKeyboardOpen();
-		if (fOpen) {
-			_pCandidateWindow->_DrawString(TEXT("off"));
-			_SetKeyboardOpen(FALSE);
-		}
-		else {
-			_pCandidateWindow->_DrawString(TEXT("on"));
-			_SetKeyboardOpen(TRUE);
-		}
-		*/
 		*pIsEaten = TRUE;
 	}
 	else {
