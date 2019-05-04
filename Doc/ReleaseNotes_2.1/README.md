@@ -18,3 +18,25 @@
 * 언인스톨러 추가 [https://github.com/navilera/NavilIME/issues/7]
 * 설정툴 추가 [https://github.com/navilera/NavilIME/issues/8]
 * 3-18Na 자판 변경 사항 반영 [https://github.com/navilera/NavilIME/issues/9]
+
+## 인스톨러
+
+아래 링크에서 나빌입력기 2.1의 인스톨러를 내려받을 수 있습니다.
+
+https://github.com/navilera/NavilIME/blob/master/Release/Installer/NavilIme-2.1.0.exe
+
+인스톨러를 내려받고 실행하면 자동으로 나빌입력기 2.1을 설치합니다.
+
+![나빌입력기 인스톨러](https://github.com/navilera/NavilIME/blob/master/Doc/ReleaseNotes_2.1/installer_01.JPG)
+
+Next만 누르면 됩니다.
+
+## 설정툴
+
+
+
+## 언인스톨러
+
+## 3-18Na 레이아웃 변경
+
+## 다운로드
