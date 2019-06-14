@@ -237,6 +237,7 @@ STDMETHODIMP TextService::OnKeyDown(ITfContext *pContext, WPARAM wParam, LPARAM 
 	{
 		DebugLogFile(L"\t%s -> %x\n", L"commit", commit);
 		if (_IsComposing())	{
+			_HandleComposition(pContext, (WCHAR)commit);
 			_EndComposition(pContext);
 		}
 		else {
