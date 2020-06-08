@@ -3,13 +3,13 @@ Windows Hangul Input Method Editor based on TSF
 
 NavilIME is a Hangul input method editor for Windows based on TSF (Text Service Framework) using the libhangul. NavilIME supports following Hangul keyboard layouts.
 
-* Seobul 3-18Na
-* Seobul 3-90
-* Seobul 3-91 final
-* Seobul no-shift
-* Seobul yeot-Hangul
-* Dobul standard
-* Dobul yeot-Hangul
+* Sebeol 3-18Na
+* Sebeol 3-90
+* Sebeol 3-91 final
+* Sebeol no-shift
+* Sebeol yet-Hangul
+* Dubeol standard
+* Dubeol yet-Hangul
 * Hangul roman
 
 ## How to build NavilIME
