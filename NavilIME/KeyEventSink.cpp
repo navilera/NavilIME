@@ -158,6 +158,18 @@ void TextService::_Automata(UINT key)
 		return;
 	}
 
+	// ESC가 눌리면 조합을 중지하고 flush하고 영문 모드로 바꾼다.
+	if (key == VK_ESCAPE)
+	{
+		DebugLogFile(L"\t%s\n", L"-> toggle Hangul ESC");
+		_pHangulTurnOnOffStatus->ToggleStatus();
+
+		// 키를 먹지 않고 그대로 내려 보낸다.
+		_keyEaten = false;
+
+		return;
+	}
+
 	if (gNavilIME.HangulProcess((int)code))
 	{
 		DebugLogFile(L"\t%s %x\n", L"proc:", code);
