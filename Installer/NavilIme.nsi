@@ -1,7 +1,7 @@
 ﻿; NavilIME Installation Script
 ; Written by Manwoo Yi
 
-!define RELVERSION      "2.3.0"
+!define RELVERSION      "2.3.3"
 !define APPNAME         "NavilIME ${RELVERSION}"
 
 !define DLLNAME "NavilIME.dll"
