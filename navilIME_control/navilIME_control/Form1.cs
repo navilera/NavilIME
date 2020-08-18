@@ -65,7 +65,7 @@ namespace navilIME_control
          * 윈폼 디자인에 comboBox_keyboards 컴포넌트의 아이템 순서와 키보드 레이아웃 아이디 순서가 일치해야함.
          * 수정하기 전에 윈폼 디자인 설정을 먼저 확인할 것.
          */
-        private string[] layoutName = { "318Na", "39", "3f", "2", "2y", "32", "3s", "3y", "ro" };
+        private string[] layoutName = { "318Na", "39", "3f", "2", "2y", "32", "3s", "3y", "ro", "ahn" };
         private int initialKeyboardComboIndex = 0;
 
         private void Load_keyboard_combo()

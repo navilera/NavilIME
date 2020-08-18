@@ -31,20 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Keyboard = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button_Cancel = new System.Windows.Forms.Button();
-            this.button_Ok = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.comboBox_keyboards = new System.Windows.Forms.ComboBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.button_Ok = new System.Windows.Forms.Button();
+            this.button_Cancel = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage_Keyboard.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,17 +69,6 @@
             this.tabPage_Keyboard.Text = "Keyboards";
             this.tabPage_Keyboard.UseVisualStyleBackColor = true;
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.button_Ok);
-            this.panel1.Controls.Add(this.button_Cancel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(3, 408);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(710, 88);
-            this.panel1.TabIndex = 0;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.panel5);
@@ -93,53 +82,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Keyboards";
-            // 
-            // button_Cancel
-            // 
-            this.button_Cancel.Location = new System.Drawing.Point(31, 13);
-            this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(165, 62);
-            this.button_Cancel.TabIndex = 0;
-            this.button_Cancel.Text = "Cancel";
-            this.button_Cancel.UseVisualStyleBackColor = true;
-            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
-            // 
-            // button_Ok
-            // 
-            this.button_Ok.Location = new System.Drawing.Point(219, 13);
-            this.button_Ok.Name = "button_Ok";
-            this.button_Ok.Size = new System.Drawing.Size(165, 62);
-            this.button_Ok.TabIndex = 1;
-            this.button_Ok.Text = "OK";
-            this.button_Ok.UseVisualStyleBackColor = true;
-            this.button_Ok.Click += new System.EventHandler(this.button_Ok_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(3, 27);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(99, 375);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(605, 27);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(102, 375);
-            this.panel3.TabIndex = 1;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(102, 27);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(503, 100);
-            this.panel4.TabIndex = 2;
             // 
             // panel5
             // 
@@ -164,11 +106,70 @@
             "세벌식 두벌 레이아웃",
             "세벌식 no shift",
             "세벌식 옛한글",
-            "로마자"});
+            "로마자",
+            "안마태"});
             this.comboBox_keyboards.Location = new System.Drawing.Point(0, 0);
             this.comboBox_keyboards.Name = "comboBox_keyboards";
             this.comboBox_keyboards.Size = new System.Drawing.Size(503, 33);
             this.comboBox_keyboards.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(102, 27);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(503, 100);
+            this.panel4.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(605, 27);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(102, 375);
+            this.panel3.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(3, 27);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(99, 375);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.button_Ok);
+            this.panel1.Controls.Add(this.button_Cancel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(3, 408);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(710, 88);
+            this.panel1.TabIndex = 0;
+            // 
+            // button_Ok
+            // 
+            this.button_Ok.Location = new System.Drawing.Point(219, 13);
+            this.button_Ok.Name = "button_Ok";
+            this.button_Ok.Size = new System.Drawing.Size(165, 62);
+            this.button_Ok.TabIndex = 1;
+            this.button_Ok.Text = "OK";
+            this.button_Ok.UseVisualStyleBackColor = true;
+            this.button_Ok.Click += new System.EventHandler(this.button_Ok_Click);
+            // 
+            // button_Cancel
+            // 
+            this.button_Cancel.Location = new System.Drawing.Point(31, 13);
+            this.button_Cancel.Name = "button_Cancel";
+            this.button_Cancel.Size = new System.Drawing.Size(165, 62);
+            this.button_Cancel.TabIndex = 0;
+            this.button_Cancel.Text = "Cancel";
+            this.button_Cancel.UseVisualStyleBackColor = true;
+            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // Form1
             // 
@@ -181,9 +182,9 @@
             this.Text = "NavilIME Control Panel";
             this.tabControl1.ResumeLayout(false);
             this.tabPage_Keyboard.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
